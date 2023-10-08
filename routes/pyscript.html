@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/logo.png">
+
+    <!-- Implement PyScript-->
+    <link rel="stylesheet" href="static/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <link rel="stylesheet" href="static/style.css">
+    <title>Vibely | PyScript</title>
+
+    <py-config type="json">
+        {
+          "packages": ["requests", "pyodide-http"]
+        }
+    </py-config>
+
+
+
+    <py-script src="static/script/code.py"></py-script>
+
+    <py-script>
+        
+   
+
+        from pyscript import when
+        
+        query_strings = get_query_parameters()
+        
+        t1 = performance.now()
+        socket = connect_websocket(window.location.host, query_strings["token"], query_strings["name"])
+        t2 = performance.now()
+
+        if(perf["WEBSOCKET_DURATION"]):
+            console.log(";".join([";websocket_connection_duration",str(t1),str(t2),str(t2-t1)]))
+
+        #Event Handler zum senden von Nachrichten
+        @when("click",selector="#send_btn")
+        def handle_click(evt):
+            asyncio.ensure_future(send_text_message(socket,evt.timeStamp))
+
+      
+        @when("keypress",selector="#send_input")
+        def handle_enter(evt):
+            if(evt.key == "Enter"):
+                asyncio.ensure_future(send_text_message(socket,evt.timeStamp))
+
+    </py-script>
+
+    
+
+
+</head>
+<body>
+    <div id="loader">
+        <div>
+            <img src="static/logo.png"/>
+            <p>Vibely</p>
+        </div>
+    </div>
+    <div id="chatapp_container">
+        <div id="top_box">
+            <div class="logo">
+                <img src="static/logo.svg"/><p>Vibely</p>
+            </div>
+            <div id="online_container">
+                <div class="pulsating-circle"></div>
+                <span id="online_count">0 Online</span>
+            </div>
+            <a href="/" id="leave_container">
+                <p>Verlassen</p><img src="static/exit.png" />
+            </a>
+        </div>
+        <div id="content_box">
+            <!-- Messages go here -->     
+        </div>
+        <div id="input_box">
+            <img class="send_emoji" src="static/emoji.png">
+            <input id="send_input" class="send_input" type="text" placeholder="Deine Nachricht...">
+            <input id="send_btn" class="send_btn" type="submit" value="Senden">
+        </div>
+    </div>
+</body>
+</html>

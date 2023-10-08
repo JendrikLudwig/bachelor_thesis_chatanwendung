@@ -1,0 +1,17 @@
+{
+  "name": "bachelorarbeit",
+  "version": "1.0.0",
+  "description": "Implementierung einer Chatapp mit Frontendvarianten in Javascript und PyScript",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jendrik Ludwig",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-ws": "^5.0.2",
+    "nodemon": "^3.0.1"
+  }
+}

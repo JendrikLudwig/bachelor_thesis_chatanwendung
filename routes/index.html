@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/logo.png">    
+    <link rel="stylesheet" href="static/style.css">
+    <title>Welcome to Vibely</title>
+
+    <style>
+
+        @font-face {
+            font-family: K2D;
+            src: url("static/k2d.ttf");
+        }
+
+        label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1F1F1F;
+            color: #3C4042;
+            width: 100%;
+            height: 1.6rem;
+            border: solid 2px #B64FC8;
+            cursor: pointer;
+                    
+        }
+
+        input {
+            margin: 0;
+            &[type="text"] {
+                width: 100%;
+                height: 1.5rem;
+
+            }
+        }
+
+        input[type="radio"]{
+            display: none;
+            position: absolute;
+
+            &:checked+label {
+                background-color: #B64FC8;
+                color: white
+            }
+        }
+
+        #logo_section {
+            display: flex;
+            flex-direction: row;
+            justify-content:center;
+            align-items:center;
+            transform: scale(0.8);
+        }
+
+        #login_box {
+            width: 35rem;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            background-color: #1F1F1F;
+            -webkit-box-shadow: 0px 5px 50px 0px rgba(0,0,0,0.25); 
+            box-shadow: 0px 5px 50px 0px rgba(0,0,0,0.25);
+
+            
+        }
+
+        #logo_section > img {
+
+        }
+
+        #logo_section  p {
+            font-size: 3rem;
+            margin-left:0.5rem
+        }
+
+        .single_bar {
+
+        }
+
+        .combined_form {
+            background-color: #3C4042;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+
+        }
+
+        .combined_form > input {
+            background-color: rgba(0,0,0,0);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-family: "K2D";
+
+        }
+
+        .combined_form > button {
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            width: 3rem;
+            background-color: rgba(0,0,0,0);
+            border: none;
+        }
+
+        .combined_form > button > img {
+            width: 2rem;
+            &:hover {
+                transform: scale(0.85);
+                transition-duration: 0.2s;
+                cursor: pointer;
+            }
+        }
+       
+
+       .s_ps {
+            border-radius: 0 0.5rem 0.5rem 0;
+       }
+
+       .s_js {
+            border-radius: 0.5rem 0 0 0.5rem;
+       }
+
+    </style>
+</head>
+<body>
+    <div id="logo_section">
+        <img src="static/logo.svg"/><p>Vibely</p>
+    </div>
+    <div id="login_box" class="single_bar flex-col">
+        <div class="flex-row combined_form">
+            <input id="input_username" type="text" name="" placeholder="Username...">
+            <button onclick="join_chat()"><img src="static/enterarw.svg"/></button>
+        </div>
+        <div class="flex-row">
+            <input type="radio" id="s_js" name="selfrontend" value="js_chat" checked />
+            <label class="s_js" for="s_js">JavaScript</label>
+            <input type="radio" id="s_ps" name="selfrontend" value="ps_chat" />
+            <label class="s_ps" for="s_ps">PyScript</label>
+        </div>
+    </div>
+    <script>
+
+        document.getElementById('input_username').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                join_chat()
+            }
+        });
+
+
+
+        const link = (client, username) => {return `http://${window.location.host}/${client}?token=VJ9YCPLidZclyuBfRXc7RhPp8dFj7f&name=${username}`}
+        
+        const join_chat = () => {
+            let username = document.getElementById("input_username").value
+            let client_select = document.querySelector('input[name="selfrontend"]:checked').value;
+            
+            if(!username || !client_select) return false
+            
+            const loc = link(client_select,username)
+            
+            window.location.href = loc
+
+
+        }
+    </script>
+</body>
+</html>

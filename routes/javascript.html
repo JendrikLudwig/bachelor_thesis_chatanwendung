@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/logo.png">
+
+    <link rel="stylesheet" href="static/style.css">
+    <script src="static/script/code.js"></script>
+
+    <title>Vibely | JavaScript</title>
+
+    <script>
+        const query_strings = getQueryParameters()
+        
+        const t1 = performance.now()
+        socket = connectWebSocket(window.location.host, query_strings["token"], query_strings["name"])
+        const t2 = performance.now()
+        
+        if(PERF.WEBSOCKET_DURATION) console.log([";websocket_connection_duration",t1,t2,t2-t1].join(";"))
+
+    </script>
+
+</head>
+<body>
+    <div id="loader">
+        <div>
+            <img src="static/logo.png"/>
+            <p>Vibely</p>
+
+        </div>
+    </div>
+    <div id="chatapp_container">
+        <div id="top_box">
+            <div class="logo">
+                <img src="static/logo.svg"/><p>Vibely</p>
+            </div>
+            <div id="online_container">
+                <div class="pulsating-circle"></div>
+                <span id="online_count">0 Online</span>
+            </div>
+            <a href="/" id="leave_container">
+                <p>Verlassen</p><img src="static/exit.png" />
+            </a>
+        </div>
+        <div id="content_box">
+            <!-- Chat Nachrichten kommen hier hin -->
+        </div>
+        <div id="input_box">
+            <img class="send_emoji" src="static/emoji.png">
+            <input id="send_input" class="send_input" type="text" placeholder="Deine Nachricht...">
+            <input id="send_btn" class="send_btn" type="submit" value="Senden">
+        </div>
+    </div>
+    <script>
+        document.getElementById('send_btn').addEventListener('click', function(event) {
+            sendTextMessage(socket,event.timeStamp)
+        })
+
+        document.getElementById('send_input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                sendTextMessage(socket,event.timeStamp)
+            }
+        });
+    </script>
+</body>
+</html>
