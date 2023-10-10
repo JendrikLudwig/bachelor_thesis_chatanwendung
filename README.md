@@ -3,6 +3,10 @@
 
 This web chat application was developed as part of a bachelor thesis by Jendrik Ludwig. The frontend was implemented with Javascript as well as with PyScript (Python).
 
+## Requirements
+
+- npm 9.5.1
+- node.js 18.16.0
 
 ## Run Locally
 
