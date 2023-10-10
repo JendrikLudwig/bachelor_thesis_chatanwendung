@@ -1,7 +1,7 @@
 
 # Chat application
 
-This web chat application was developed as part of a bachelor thesis by Jendrik Ludwig. The frontend was implemented with Javascript as well as with PyScript (Python).
+This web chat application was developed as part of a bachelor thesis by Jendrik Ludwig. The frontend was implemented with JavaScript as well as with PyScript (Python).
 
 ## Requirements
 
