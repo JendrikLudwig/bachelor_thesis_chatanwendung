@@ -27,7 +27,6 @@ body {
     margin: 0;
     width: 100vw;
     height: 100vh;
-
 }
 
 #chatapp_container {
@@ -47,7 +46,6 @@ body {
     padding: 0.5rem;
     -webkit-box-shadow: 0px 5px 50px 0px rgba(0,0,0,0.25); 
     box-shadow: 0px 5px 50px 0px rgba(0,0,0,0.25);
-
 }
 
 #content_box {
@@ -64,8 +62,7 @@ body {
     -webkit-box-shadow: 0px 5px 50px 0px rgba(0,0,0,0.25); 
     box-shadow: 0px 5px 50px 0px rgba(0,0,0,0.25);
     border-right: var(--main-box-color) solid 0.5rem;
-    flex-flow: column nowrap;
-    
+    flex-flow: column nowrap;  
 }
 
 #content_box > :first-child {
@@ -119,7 +116,6 @@ body {
     width: 100%;
     margin: 0.5rem 0;
     overflow-anchor: auto;
-
 }
 
 .recieved {
@@ -222,7 +218,6 @@ body {
     width: 2.25rem;
     align-items: center;
     justify-content: center;
-
 }
 
 .c1 {background-color: hsl(36,55%,55%);}
@@ -262,7 +257,6 @@ body {
 #content_box::-webkit-scrollbar-thumb {
     background-color: #B1A6B3;
     border-radius: 1rem;
-
 }
   
  
@@ -329,7 +323,6 @@ body {
         width: 2rem;
         height: 2rem;
     }
-
   }
   
   @keyframes rotate {

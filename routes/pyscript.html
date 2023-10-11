@@ -42,7 +42,6 @@
         @when("click",selector="#send_btn")
         def handle_click(evt):
             asyncio.ensure_future(send_text_message(socket,evt.timeStamp))
-
       
         @when("keypress",selector="#send_input")
         def handle_enter(evt):
@@ -76,7 +75,7 @@
             </a>
         </div>
         <div id="content_box">
-            <!-- Messages goes here -->     
+            <!-- Messages go here -->     
         </div>
         <div id="input_box">
             <img class="send_emoji" src="static/emoji.png">
